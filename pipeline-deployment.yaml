@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pipeline
+  labels:
+    app: pipeline
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: pipeline
+  template:
+    metadata:
+      labels:
+        app: pipeline
+    spec:
+      containers:
+        - name: collector
+          image: llana13/tweet-collector
+
+        - name: mongodb
+          image: mongo
+          ports:
+            - containerPort: 27017
+
+        - name: etl-job
+          image: llana13/etl-job
+
+        - name: postgresdb
+          image: postgres
+          volumeMounts:
+            - name: postgres-persistent-volume
+              mountPath: /postgres/data
+          ports:
+            - containerPort: 5432
+      volumes:
+        - name: collector-storage
+          emptyDir: {}
+
+        - name: mongo-persistent-volume
+          persistentVolumeClaim:
+            claimName: mongo-claim
+        - name: etl-storage
+          emptyDir: {}
+
+        - name: postgres-persistent-volume
+          persistentVolumeClaim:
+            claimName: postgres-claim

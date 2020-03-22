@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  labels:
+    app: pipeline
+data:
+  POSTGRES_DB: tweet_pdb
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
