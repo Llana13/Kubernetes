@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pipeline
+spec:
+  type: NodePort
+  selector:
+    app: pipeline
+  ports:
+    - targetPort: 9876
+      port: 9876
+      nodePort: 30008

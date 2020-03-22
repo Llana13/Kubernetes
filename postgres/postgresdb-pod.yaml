@@ -14,7 +14,7 @@ spec:
         - name: postgres-persistent-volume
           mountPath: /postgres/data
       ports:
-        - containerPort: 5432
+        - containerPort: 9876
   volumes:
     - name: postgres-persistent-volume
       persistentVolumeClaim:

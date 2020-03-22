@@ -8,6 +8,9 @@ spec:
   containers:
     - name: collector
       image: llana13/tweet-collector
+      ports:
+      - containerPort: 9876
+        protocol: TCP
       command: [ "/bin/bash", "-c", "--" ]
       args: [ "while true; do sleep 30; done;" ]
       volumeMounts:

@@ -5,7 +5,7 @@ metadata:
   labels:
     app: pipeline
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       app: pipeline
@@ -17,22 +17,41 @@ spec:
       containers:
         - name: collector
           image: llana13/tweet-collector
+          command: [ "/bin/bash", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
+          volumeMounts:
+          - name: collector-storage
+            mountPath: /data/collector
 
         - name: mongodb
           image: mongo
+          command: [ "/bin/bash", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
+          volumeMounts:
+            - name: mongo-persistent-volume
+              mountPath: /mongo/data
           ports:
             - containerPort: 27017
-
         - name: etl-job
           image: llana13/etl-job
+          command: [ "/bin/bash", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
+          volumeMounts:
+          - name: etl-storage
+            mountPath: /data/etl
 
         - name: postgresdb
           image: postgres
+          command: [ "/bin/bash", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
           volumeMounts:
             - name: postgres-persistent-volume
               mountPath: /postgres/data
           ports:
             - containerPort: 5432
+
+      imagePullSecrets:
+        - name: regcred
       volumes:
         - name: collector-storage
           emptyDir: {}
@@ -46,3 +65,6 @@ spec:
         - name: postgres-persistent-volume
           persistentVolumeClaim:
             claimName: postgres-claim
+
+      nodeSelector:
+        disktype: ssd
