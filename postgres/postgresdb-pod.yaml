@@ -8,8 +8,9 @@ spec:
   containers:
     - name: postgresdb
       image: postgres
-      command: [ "/bin/bash", "-c", "--" ]
-      args: [ "while true; do sleep 30; done;" ]
+      envFrom:
+        - configMapRef:
+            name: postgres-config
       volumeMounts:
         - name: postgres-persistent-volume
           mountPath: /postgres/data

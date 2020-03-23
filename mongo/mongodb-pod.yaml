@@ -8,8 +8,7 @@ spec:
   containers:
     - name: mongodb
       image: mongo
-      command: [ "/bin/bash", "-c", "--" ]
-      args: [ "while true; do sleep 30; done;" ]
+
       volumeMounts:
         - name: mongo-persistent-volume
           mountPath: /mongo/data
