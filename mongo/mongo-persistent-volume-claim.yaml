@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mongo-claim
   labels:
-    app: pipeline
+    app: hug
 spec:
   storageClassName: manual
   accessModes:
