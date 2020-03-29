@@ -1,25 +1,44 @@
-![logo](screenshots/logo.jpg)
+![logo](screenshots/logo.jpg =250x250)
+
+
+This application perform 2 steps:
+
+* Intercept tweets that match some pre-defined characteristics (such as location, language, topic...) and store them in a MongoDB
+
+* From the MongoDB retrieve the corpus information of the tweet, stract the sentiment scores and send them to a PostgreSQL database where they are ready to use
+
+In order to perform this steps, 4 Docker images are needed:
+
+* Tweet-collector - self made
+
+* MongoDB - oficial image
+
+* ETL-job - self made and available in my personal Docker Hub
+
+* PostgreSQL - oficial image
 
 
 
-* In order to collect tweets and to proccess them afterwards, I need to upload two Docker images to DockerHub to make them reachable to Kubernetes
 
-* Create a deployment to connect my four containers:
-	* Tweet collector
-	* Mongo datase
-	* ETL process
-	* Postgres database
+My Kubernetes dashboard with the pipeline up and running:
 
-* This deployment will automatically create the containers inside a unique pod
+![Dashboard](screenshots/dashboard.png =250x250)
 
-This is the basic look of the Kubernetes dashboard where you
 
-![Dashboard](screenshots/dashboard.png)
+Summary of my namespace where you can see all the basic components and their status:
 
-![Namespace](screenshots/namespaces.png)
+![Namespace](screenshots/namespaces.png =250x250)
 
-![MongoDB](screenshots/mongo_tweets.png)
 
-![PostgreSQL](screenshots/psql_tweets.png)
+Through the Kubectl I can open a command line inside the containers and intereact with the databases to check the information already stored.
+
+MongoDB's container:
+
+![MongoDB](screenshots/mongo_tweets.png =250x250)
+
+
+Same process but here inside PostgreSQL container:
+
+![PostgreSQL](screenshots/psql_tweets.png =250x250)
 
 
