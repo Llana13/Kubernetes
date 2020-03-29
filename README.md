@@ -1,4 +1,4 @@
-![logo](screenshots/logo.jpg =250x250)
+![logo](screenshots/logo.jpg s=200)
 
 
 This application perform 2 steps:
@@ -22,23 +22,23 @@ In order to perform this steps, 4 Docker images are needed:
 
 My Kubernetes dashboard with the pipeline up and running:
 
-![Dashboard](screenshots/dashboard.png =250x250)
+![Dashboard](screenshots/dashboard.png){:height="50%" width="50%"}
 
 
 Summary of my namespace where you can see all the basic components and their status:
 
-![Namespace](screenshots/namespaces.png =250x250)
+![Namespace](screenshots/namespaces.png){:height="700px" width="400px"}
 
 
 Through the Kubectl I can open a command line inside the containers and intereact with the databases to check the information already stored.
 
 MongoDB's container:
 
-![MongoDB](screenshots/mongo_tweets.png =250x250)
+![MongoDB](screenshots/mongo_tweets.png=250x250)
 
 
 Same process but here inside PostgreSQL container:
 
-![PostgreSQL](screenshots/psql_tweets.png =250x250)
+![PostgreSQL](screenshots/psql_tweets.png)
 
 
