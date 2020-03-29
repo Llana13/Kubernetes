@@ -1,4 +1,4 @@
-![logo](screenshots/logo.jpg s=200)
+![logo](screenshots/logo.jpgs=200)
 
 
 This application perform 2 steps:
@@ -34,7 +34,7 @@ Through the Kubectl I can open a command line inside the containers and intereac
 
 MongoDB's container:
 
-![MongoDB](screenshots/mongo_tweets.png=250x250)
+![MongoDB](screenshots/mongo_tweets.png)=250x250
 
 
 Same process but here inside PostgreSQL container:
